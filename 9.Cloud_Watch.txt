@@ -1,0 +1,50 @@
+//What is default matric o cloud watch?//
+cpu utilization
+max n.w in max n/w out
+disk usases
+memory utilization
+atoscaling group metrics
+
+//cloud watch collects monitering and operational data in the form of logs, metrics and events.//
+
+step:1 Create an Ec2 instance :> dublicate :> then
+step:2 Search cloud watch :>
+<a> Treshhold & <c> Alarme create
+<b> Dashbord
+
+<a>:click on metrics 
+   :> copy & paste ec2 id 
+   :> enter:> show 14 metrics
+   :> click cpu utilization
+   :> custome :> number :> refresh :> all metrics :> slect n/win, n/wout:> 
+
+<b> Create a Dashbord
+    :> action 
+    :> add dashbord 
+    :> create new
+    :> name(ec2-1) 
+    :> number
+    :> add to dashboard:
+    save :> action :>shared dashboard :> shared publicly :> conferm :>
+    save & generate link :> copy to link to clipboard :> paste url :> auto refresh time 5 mins :
+
+<c> //Create an alarm: if CPU utilization => 70 Email notification & terminate EC2//
+    :> go to alram
+    :> create alarm
+    :> slect metrics
+    :> copy paste ec2 id 
+    :> enter :> slect cpu utilization:>
+    :> conditions :> static :> greater/equal:> 70 :> next :> notification:> 
+:> slect an sns topic:
+:> slect an existing sns topic :> dublicate & Search sns :>  topic name :> name :> next :> standerd :> create topic :>
+subsbcription: create subscription :> protocol :> Email :> create subscription :> conferm email :>
+
+now in cloud watch :> slet an exiting sns topic :>
+refrech & search ur topic :> slect:
+EC2 action :> in aram:> terminate :> alarm :> name > next :> create alarm :> ok state:
+now :> ec2 :> increase cpu utilization :> yes > /dev/null & :> top :> after 5 mins :> 
+
+
+
+
+

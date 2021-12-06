@@ -1,0 +1,22 @@
+
+                                    #VPC#
+---CIDR:- a set of IP used for identifing a n/w or sub network
+---VPC support 16 or Smaller CIDR 
+---subnet is a range of IPAdd
+
+1:#how does VPC peering work?#
+---through vpc peering we can connetc Two VPCs
+
+2:#how implement security in ur VPC#
+---through security Group & NACL
+---using cloud watch monitoring VPC component & VPC connection
+
+3:#what is DCHCP-DNS option avilable in VPC#
+---when we creat VPC aws automatically creat aset of dhcp & associate them with vpc
+
+4:#what is VPC flow logs#
+---vpc flow log allow to track & analyze all ip add comming in or out from network
+
+5:#why we use NACL with VPC#
+---a nacl is a optional layer of security for vpc that acts as a firewall for 
+controlling trafic in and out one of more subnet

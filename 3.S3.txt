@@ -1,0 +1,31 @@
+--->//per aws A/c 100 bucket// 
+--->//size of bucket is 5 tb//
+
+1:What is S3 ?
+S3 is storage. we can use to store & retrieve any amount of data, at any tim, from any where on web.
+
+
+
+
+2:#//types of s3//# 
+   <a> amazone s3 standerd
+   <b> amazone glacier                (long term storage)
+   <c> amazone glacier deep archive   (cheapest)
+   <d> amazone s3 standard IA          (low cost but pay to access,,kabhi kabhar)
+   <e> amazone s3 one zone IA          (kk)
+   <f> amazone s3 inteligent tiring
+
+3:#//how to change storage class in s3//#
+----:> go to object present in bucket
+----:> select object action
+----:> in action drop down
+----:> choose edit storage class
+----:> choose storage clasee as we need & save
+
+4: //how am i charged for using versioning?//
+   if i hav file of 1 gb for this i hav pay for 1 gb.
+   and if i have 10 versions of same file so i hav to pay for 10 gb
+   for every version we hav to pay seprestly.
+
+   99.99999999999 (11 times9 duratibility is there)
+

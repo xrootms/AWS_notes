@@ -1,0 +1,39 @@
+                                                  #Auto-Scalling#
+--
+1:#What is Autoscalling group#
+ --- Autoscalling group is collection of EC2 instances.
+ --- it help to ensure the currect no. of ec2 instance avaliable 
+     to handle the load for application
+
+2:#how Autoscalling manage traffic flow for elb#
+ --- if instance usages goes upto 80% cpu load, autoscalling spawn
+     up new instance and ASG define ELB attached to the group automatically
+     divert client traffic to it.
+
+3:#can i associate multiple TG under one ASG?#
+ --- we can configure more than one ELB with an ASG, after we attach the ELB,
+     it automacally regester instance in the group and destribute incoming 
+     traffic acress the instances.
+
+4:#what r rthe end point for autoscalling health check.?#
+5:#can we use spot & on-demand instances with ASG.?#
+6:#can we associate target group creat in diffrent VPCs.?#
+7:#if i want to launch multiple typs of instance with in same TG what i do.?#
+
+-------------------------------------------------------------------------------------------------------------------------
+
+1:---open Autoscalling---Launch configuration <with myAMI>
+2:---Autoscalling group
+    (a:) configure autoscalling group details 
+         -<create autoscalling group>--(name---n/w---subnet)
+         -<advance Details>--(check LB---select ur TG)
+    (b:) configure scalling policies
+         <>-keep this group at initial size
+         <>-use scalling policies to adgest capacity of 
+            -traget tracking scalling policies
+            -scalling policy with step
+            -simple scalling policy
+3:---configuration iotification
+4:---tags
+5:---review
+5:---creat ASG

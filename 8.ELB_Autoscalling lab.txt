@@ -1,0 +1,69 @@
+step:1- creat a vpc with subnets
+---creat a new vpc with CIDr 10.0.0.0/16
+---add 2 public subnets in diffrent AZ
+   *publicsubnet1 with cidr 10.0.1.0/24
+   *publicsubnet2 with cidr 10.0.2.0/24
+---creat an internet gateway and attach it to ur VPC.
+---modify the main rout table to add route for internet gateway
+---associate both the subnet to the main route table. 
+
+
+step:2- Create an AMI using Ec2 linux
+---launch 1 ec2 instance with publicip in ur VPC
+---create & associate asecurity group with port 80 & 22 open from anwere
+---ssh to ec2 instance using ec2-user
+---switch to root & intall enable & start httpd
+    *install httpd - yum install httpd 
+    *enable httpd - systemctl enable httpd
+    *start httpd- systemctl start httpd
+    cd /var/www/html
+    vi index.html
+----create a test html file on ec2 instance.index.html
+---test html file using instance url
+---this ec2 instance is ur bastion host
+
+step:3- create an AMI using this ec2 instance
+     ec2 instance select ---action --image --create image --image name -- create image --check AMI service.
+
+
+step:3- ELB & Target-Group
+---create an ALB
+---Ensure that the LB is internet facing with http protocol
+---slect the AZs of the 2 public subnets to load blancer.
+---create a new security group & open port 80 from anywhere
+---create a new target group with
+   *target type as instance
+   *protocol as http
+   *port as 80
+   *health check protocol as http & path as /index.html
+   *"no target to register"
+---copy ur application LBs DNS name
+
+step:4- Launch Configuretion & Auto Scaling group
+ a>Launch Configuretio:--
+---create a new security group for launch configuration
+---*open port 80 & 22
+---*port 80 should be accessible by the security group of ur ALB
+---*port 22 should be accessible by the security group of ur bastion host ec2.
+---<open security group service --name --select vpc --HTTP-custom-ALBSG>--SSH-custom-bastionEc2SG>--
+
+---create a launch configuration ---autoscaling service/launch configuration/create launch config/my ami> 
+   *using ur AMI & security group
+   *configure detiles --name-name of NewSG --advance detils --ip add typ --do not assign 
+   *configure SG --select newly reated sg-NewSG --create.
+
+ b>ASG creation:--
+---create a new Auto-scaling gruop
+   *using ur Launch configuration
+   *group size-1
+   *network- ur VPC
+   *subnets- choose both subnets
+   *Under Advance details-
+     *checkLoad Blancer
+     *select ur target group
+     *Modify the Health check to 10 sec
+---choose "use scaling policies to adjust the capacity of this group"
+---for scale group size-
+   *for metric select Application Loadbalncer request per count
+   *Target vale- 1
+   * instance need-10

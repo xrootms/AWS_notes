@@ -1,0 +1,19 @@
+---per aws A/c 5000 EBS volume we can creat
+---per aws A/c 10000 snapshort we can creat
+---EBS volume r AZ spesific
+---snapshort r region spesific
+16 tb mx size of ebs
+
+1#:Types of EBS:#
+    <a> gerenal purpose SSD (gp2)
+    <b> provisnal IOPS SSD (IO1)
+    <c> Throughput optimized HDD
+    <d> Cold HDD
+
+2#:what is the conditions if we mount EBS to instance:#
+---- EBS volume and EC2 instance must be in same AZ.
+---- volume can only be attacheed to stoped instance. 
+
+3#:how to take automatic backup:#
+---there is a service DLM lyf cycle manager with the use of 
+---DLM we can creat snapshort life cycle policy

@@ -1,0 +1,67 @@
+
+1.>There are two types Virtualization type: 
+   a. paravirtual  
+   b. hvm
+
+2.> types of root devices
+   a> EBS 
+   b> Instance store
+
+3> Types of EBS Volume & Use cases?
+   t2/t3.miceo>- t2 is the family type means particular types of family we have.
+   after dot its denotes the particular size of a machine it means how mach ram and cpu is there.
+   t2     .  nano
+   family    h/w size
+
+4> why we attach IAM role with EC2 machine while creating it?
+   This will allow us to upload or perform any opration of the top os s3
+
+5>Types of hypervisors in aws?
+  a>zen
+  b>nitro
+
+6> How to check shared AMI?
+   go to AMI> click Owned by me> public AMI> then > private AMI.
+
+7>How to run systems in EC2 env?
+go to ur ec2 dashbord> slect ur reasion > slect ur ami> slect tampleate>
+slect ur root partiion device ur vpc/subnet rest of things
+
+8>EBS & Instance storage diffrent> 
+if we stop our machine we can not start againe with Instance storage.
+
+9>Will i lose the metric data if i desable monitoring for an EC2 instance ?
+no: by default aws holds the metics for 14 days.
+
+10>LB algorithem supported by AWS by default
+<a>round robin 
+<b>least  outstanding reguests 
+
+11:#each region we can creat max 20 EC2.#for extension go to support##
+:   Gereral purpose       (A-serise, M-serise, T-serise) 
+    compute optimiz       (C-serise)
+    Memory optimise       (z x R)
+    Storage optimise      (H D I)
+    Accelerated computing (G F p)
+    High memory           (U-serise)
+    Previous generation 
+
+12:#Ec2 purchasing optin#
+    On demand (which we create & terminate as required)
+    spot Instance (those are based on bit)
+    Reserved Instance (wheather we run or not we hav to pay)
+
+13:#how we can recover keys to an EC2?#
+    -a> detach root volume
+    -b> launch a new Ec2
+    -c> attach root volume to new EC2
+    -d> modify the authorized-key file
+               #copy authorized-key from temp to orignal#
+               #lsblk
+               #mkdir /mnt/temvol
+               #mount -o nouuid /dev/xvdf1 /mnt/tem
+               #cp .ssh/auth-keys /mnt/temvol/home/ec2user/.ssh/auth
+               #unmount /mnt/tempvol
+    -e> reattach root volume to orignal
+    -f> start & connect orignal ec2 with new private key.
+

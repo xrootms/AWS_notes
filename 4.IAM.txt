@@ -1,0 +1,57 @@
+                                    #IAM#
+--per AWS a/c 5000 user can creat.
+--per AWS a/c 1000 roles can creat
+--per AWS a/c 300 group can creat
+--10 policies we can attach to a IAM role & User
+--one  User can be member of 10 groups (max)
+
+1# how to creat custom IAM Policy#
+---open IAM section
+---slect Policies
+---creat Polocy
+---visual editor
+---action > write
+---stop instance
+---start instance
+---resourcess > specific
+---instance ---instance ID ---NAME ---creat policy
+    
+
+2# how allow a specific user to specific action (stop/start) for only 1 EC2#
+  <a>- creat a custom policy
+  <b>- creat a user & attach custom policy with this user
+  <c>- validate custom resource- level permision
+<b>
+---open IAM Section
+---add user
+---specify user name
+---slect aws management console access
+---in set permissin page
+---select exiting policies directly
+---type ur created polocy name
+---search & select created polocy
+---click next & complete
+
+3#how manage passwd policy for IAM User#
+---open IAM resource section
+---select a/c setting
+---In passwd policy
+
+4#what we will do if u want a user to reset pawwsd at next login#
+
+---open IAM section
+---select users
+---chose the name of the user
+---chose security cridential
+---mange ---enable ---auto genetare/custom ---require paswd reset ---apply
+
+
+5#how do u enable MFA with User#
+
+---open IAM section
+---chose user
+---chose security cridential
+---assign MFA device
+---choose manage ---choose virtual MFA device ---then continue
+
+ 

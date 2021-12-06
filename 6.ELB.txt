@@ -1,0 +1,68 @@
+                      #ELB#
+three typs of ELB:-
+1:-ALB----<http/https- layer7>
+2:-NLB----<Tcp/Udpssl-layer4>
+3:-CLB----<http/https/Tcp/Udp/-4/7 layer>
+
+1:#what is ELB in AWS#
+---a service use for automatically distrubate incomming trafiic to ec2 servers.
+
+2:#diffrent b/n Aelb & Nelb#
+---nelb is use for realtime data streming service (vedio ect)
+---and if our application use non http protocol
+
+3:##how many ip add we can get with ELB
+---8
+
+4:#what happend if ELB goes down#
+---wait for aws restore service
+---if one ELB fail Secondry picts up and become active
+---or rute the traffic manully
+---or move traffic to a diffren region
+
+5:#how many roles can i attach to 1 ELB#
+
+6:#how many condition we can attach per roles#
+
+7:#how u manage host & path based routing with App ELB.?#
+8:#Can i farward target based on source ip address.?#
+9:#what rule will u implement if u need to farward all traffic coming 
+  from a single app to any specific TG.?#
+
+---rules: rules that we define for our listenet determine how that LB 
+rutes requests to the targets in one or more TGs.---
+---when we creat ELB there is defult rule---
+but we can edit rule for this---
+open ELB service
+choose load blancer
+       listeners
+        view/edit rules
+        add rules (plus sign)
+        insert rule
+choose add condition, host head & enter hostname <*.xyz.com> 
+       add condition, path & path pattern </xxx/xxx>
+       add condition, source ip & add CIDR block
+       add action, forward to one or more TG
+
+
+
+creat Load Blancer
+---Application Loadblancer
+1:---configer Loadblancer
+     ---name
+     ---shema
+     ---ip v4
+2:---configure security setting
+     ---vpc
+     ---AZ
+3:---configure security group
+     ---SG
+     ---SG name
+     ---http-80
+4:---congigure routing
+     ---target group
+        name
+        target typ
+5:---configure targets
+
+6:---revies creat       
